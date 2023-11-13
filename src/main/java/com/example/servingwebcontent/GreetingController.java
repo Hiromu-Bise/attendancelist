@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.util.List;
@@ -27,12 +28,18 @@ public class GreetingController {
 
         return "greeting";
     }
+    @PostMapping("/button")
+    public String button(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+
+        return "greeting";
+    }
+
     @GetMapping("/attendanceList")
     public String index(Model model) {
         String sql = "SELECT * FROM ATTENDANCES;";
 
         System.out.println(jdbcTemplate.queryForList(sql));
-        return "attendancelist";
+        return "attendancelis";
     }
 
 }
