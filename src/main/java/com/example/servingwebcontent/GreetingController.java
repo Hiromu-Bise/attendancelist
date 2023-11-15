@@ -30,16 +30,20 @@ public class GreetingController {
     }
     @PostMapping("/button")
     public String button(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        String sql = "SELECT * FROM ATTENDANCES;";
+        List<Map<String,Object>> attendances = jdbcTemplate.queryForList(sql);
+        System.out.println(attendances);
+        model.addAttribute("attendances", attendances);
 
-        return "greeting";
+        return "button";
     }
 
-    @GetMapping("/attendanceList")
-    public String index(Model model) {
-        String sql = "SELECT * FROM ATTENDANCES;";
+    @PostMapping("/greeting")
+    public String postMethod(@RequestParam("post_param") String param1) {
+        System.out.println(param1);
 
-        System.out.println(jdbcTemplate.queryForList(sql));
-        return "attendancelis";
+        return "greeting";
     }
 
 }
