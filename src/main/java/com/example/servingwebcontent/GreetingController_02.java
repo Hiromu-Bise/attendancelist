@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class GreetingController_02 {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -51,5 +51,22 @@ public class GreetingController {
 
         return "greeting";
     }
-    
+
+
+    //中本↓↓↓
+    @RequestMapping("/send01")
+    public String send01(){
+        return "send01";
+    }
+    @PostMapping("/receive01") //次回ここから（send01で入力させたデータがattendandesDBのデータと合ってるか判定したい）
+    public String login(
+            Model m,
+            @RequestParam("id") String name,
+            @RequestParam("pass") String pass
+    ) {
+        m.addAttribute("id",name);
+        m.addAttribute("pass",pass);
+        return "receive01";
+    }
+//追加
 }
