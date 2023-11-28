@@ -68,5 +68,5 @@ public class GreetingController02 {
         m.addAttribute("pass",pass);
         return "receive01";
     }
-
+//追加
 }
