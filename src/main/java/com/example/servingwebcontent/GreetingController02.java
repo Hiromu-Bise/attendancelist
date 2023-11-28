@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.w3c.dom.stylesheets.LinkStyle;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class GreetingController02 {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
