@@ -51,24 +51,5 @@ public class GreetingController {
 
         return "greeting";
     }
-    @PostMapping("/attendanceinput")
-    public String input(@RequestParam("post_param") String param1, String name, Model model) {
-
-        Date date = new Date();
-        Timestamp time = new Timestamp(date.getTime());
-        System.out.println(time);
-
-        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='111';";
-
-        jdbcTemplate.update(sql2,time);
-
-        model.addAttribute("name", name);
-        String sql = "SELECT * FROM ATTENDANCES;";
-        List<Map<String,Object>> attendances = jdbcTemplate.queryForList(sql);
-        System.out.println(attendances);
-        model.addAttribute("attendances", attendances);
-
-        return "greeting";
-    }
-
+    
 }
