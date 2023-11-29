@@ -63,4 +63,5 @@ public class GreetingController_02 {
         m.addAttribute("pass",pass);
         return "receive01";
     }
+    //hiromu test
 }
