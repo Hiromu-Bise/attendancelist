@@ -69,5 +69,5 @@ public class GreetingController_02 {
         return "receive01";
     }
 //追加
-    //bise test
+    //bise testtesttest1234
 }
