@@ -51,7 +51,9 @@ public class GreetingController_02 {
 
         return "greeting";
     }
-
+  //追加
+    //bise testtesttest1234
+  
     //中本↓↓↓
     @RequestMapping("/send01")
     public String send01(){
@@ -63,5 +65,5 @@ public class GreetingController_02 {
         m.addAttribute("pass",pass);
         return "receive01";
     }
-    //hiromu test
+  
 }
