@@ -52,7 +52,7 @@ public class GreetingController_02 {
         return "greeting";
     }
   //追加
-    //bise testtesttest1234
+    //bise testtesttest1234abcdefgh
   
     //中本↓↓↓
     @RequestMapping("/send01")
