@@ -38,7 +38,7 @@ public class GreetingController_02 {
         Timestamp time = new Timestamp(date.getTime());
         System.out.println(time);
 
-        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='12345678';";
+        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='12345678'";
 
         jdbcTemplate.update(sql2,time);
 
@@ -51,23 +51,19 @@ public class GreetingController_02 {
 
         return "greeting";
     }
-
-
+  //追加
+    //bise testtesttest1234
+  
     //中本↓↓↓
     @RequestMapping("/send01")
     public String send01(){
         return "send01";
     }
     @PostMapping("/receive01") //次回ここから（send01で入力させたデータがattendandesDBのデータと合ってるか判定したい）
-    public String login(
-            Model m,
-            @RequestParam("id") String name,
-            @RequestParam("pass") String pass
-    ) {
+    public String login(@RequestParam("id") String name,@RequestParam("pass") String pass, Model m) {
         m.addAttribute("id",name);
         m.addAttribute("pass",pass);
         return "receive01";
     }
-//追加
-    //bise testtesttest1234
+  
 }
