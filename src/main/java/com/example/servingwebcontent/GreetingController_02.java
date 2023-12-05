@@ -59,11 +59,10 @@ public class GreetingController_02 {
         return "send01";
     }
 
-    @PostMapping("/receive01") //send01で入力させたデータがattendandesDBのデータと合ってるか判定したい
+    @PostMapping("/receive01") //次回ここから（send01で入力させたデータがattendandesDBのデータと合ってるか判定したい）
     public String receive01(Model m, @RequestParam("NAME") String name, @RequestParam("PASS") String pass) {
-        m.addAttribute("name", name);
-        m.addAttribute("pass", pass);
+        m.addAttribute("name",name);
+        m.addAttribute("pass",pass);
         return "receive01";
     }
-  
 }
