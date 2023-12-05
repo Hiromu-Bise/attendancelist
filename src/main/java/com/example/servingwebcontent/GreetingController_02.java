@@ -20,9 +20,9 @@ public class GreetingController_02 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-　　@GetMapping("/greeting")
+    @GetMapping("/greeting_02")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-　
+
         model.addAttribute("name", name);
         String sql = "SELECT * FROM ATTENDANCES;";
         List<Map<String, Object>> attendances = jdbcTemplate.queryForList(sql);
@@ -32,7 +32,7 @@ public class GreetingController_02 {
         return "greeting";
     }
 
-    @PostMapping("/greeting")
+    @PostMapping("/greeting_02")
     public String postMethod(@RequestParam("post_param") String param1, String name, Model model) {
 
         Date date = new Date();
