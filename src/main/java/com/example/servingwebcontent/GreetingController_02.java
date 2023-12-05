@@ -32,7 +32,7 @@ public class GreetingController_02 {
         return "greeting";
     }
 
-    @PostMapping("/greeting_02")
+    @PostMapping("/greeting")
     public String postMethod(@RequestParam("post_param") String param1, String name, Model model) {
 
         Date date = new Date();
