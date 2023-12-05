@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="mock1.css">
+    <title>ホーム(仮)</title>
+
     <script>
         function showClock() {
           let nowTime = new Date();
@@ -16,28 +20,12 @@
         }
         setInterval('showClock()',1000);
       </script>
-    <title>勤怠入力</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 
 </head>
 <body>
 
-<p>・ログイン</p>
-<p>・連絡先登録</p>
-<p>・勤務場所登録</p>
-<p>・勤怠状況一覧表示</p>
-<p>・ログアウト</p>
-
-
-<p>こんにちは、ななしさん。</p>
-<p>状態：未出勤</p>
 <p id="realtime"></p>
-
-<form method="post" action="http://localhost:8080/input">
-    <input type="hidden" id="post" name="post_param"/>
-    <input type="submit" value="出勤">
-</form>
+<p>出勤済</p>
 
 </body>
 </html>
