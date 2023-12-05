@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="mock1.css">
+    <title>勤怠入力</title>
+
+    <script>
+        function showClock() {
+          let nowTime = new Date();
+          let nowFullYear = nowTime.getFullYear();
+          let nowMonth = nowTime.getMonth();
+          let nowDate = nowTime.getDate();
+          let nowHour = nowTime.getHours();
+          let nowMin  = nowTime.getMinutes();
+          let nowSec  = nowTime.getSeconds();
+          let msg = nowFullYear + "/" + nowMonth + "/" + nowDate + " "
+                        + nowHour + ":" + nowMin + ":" + nowSec;
+          document.getElementById("realtime").innerHTML = msg;
+        }
+        setInterval('showClock()',1000);
+      </script>
+
+</head>
+<body>
+
+    <p>・<a href="mock1.html">ログイン</a></p>
+    <p>・<a href="mock12.html">勤務場所登録</a></p>
+    <p>・<a href="mock.html">連絡先登録</a></p>
+    <p>・<a href="mock.html">勤怠状況一覧表示</a></p>
+    <p>・<a href="mock.html">ログアウト</a></p>
+
+
+    <p>こんにちは、ななしさん。</p>
+    <p>状態：未出勤</p>
+    <p id="realtime"></p>
+
+    <p><input type="submit" value="出勤" id="button1"></p>
+    <p><input type="submit" value="退勤" id="button2"></p>
+
+</body>
+</html>
