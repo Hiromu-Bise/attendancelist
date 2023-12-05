@@ -20,11 +20,12 @@ public class GreetingController_02 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    @GetMapping("/greeting_02")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+　　@GetMapping("/greeting")
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
+　
         model.addAttribute("name", name);
         String sql = "SELECT * FROM ATTENDANCES;";
-        List<Map<String,Object>> attendances = jdbcTemplate.queryForList(sql);
+        List<Map<String, Object>> attendances = jdbcTemplate.queryForList(sql);
         System.out.println(attendances);
         model.addAttribute("attendances", attendances);
 
@@ -40,29 +41,30 @@ public class GreetingController_02 {
 
         String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='12345678'";
 
-        jdbcTemplate.update(sql2,time);
+        jdbcTemplate.update(sql2, time);
 
         model.addAttribute("name", name);
         String sql = "SELECT * FROM ATTENDANCES;";
-        List<Map<String,Object>> attendances = jdbcTemplate.queryForList(sql);
+        List<Map<String, Object>> attendances = jdbcTemplate.queryForList(sql);
         System.out.println(attendances);
         model.addAttribute("attendances", attendances);
 
 
         return "greeting";
     }
-  //追加
-    //bise testtesttest1234abcdefgh
-  
+    
     //中本↓↓↓
     @RequestMapping("/send01")
-    public String send01(){
+    public String send01() {
         return "send01";
     }
-    @PostMapping("/receive01") //次回ここから（send01で入力させたデータがattendandesDBのデータと合ってるか判定したい）
-    public String login(@RequestParam("id") String name,@RequestParam("pass") String pass, Model m) {
-        m.addAttribute("id",name);
-        m.addAttribute("pass",pass);
+
+    @PostMapping("/receive01") //send01で入力させたデータがattendandesDBのデータと合ってるか判定したい
+    public String receive01(Model m, @RequestParam("NAME") String name, @RequestParam("PASS") String pass) {
+
+        m.addAttribute("name", name);
+        m.addAttribute("pass", pass);
+
         return "receive01";
     }
   
