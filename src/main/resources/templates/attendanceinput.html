@@ -34,9 +34,14 @@
 <p>状態：未出勤</p>
 <p id="realtime"></p>
 
-<form method="post" action="http://localhost:8080/input">
-    <input type="hidden" id="post" name="post_param"/>
+<form method="post" action="http://localhost:8080/attendanceinput">
+    <input type="hidden" id="attendance" name="post_param"/>
     <input type="submit" value="出勤">
+</form>
+
+<form method="post" action="http://localhost:8080/leavinginput">
+    <input type="hidden" id="leaving" name="post_param"/>
+    <input type="submit" value="退勤">
 </form>
 
 </body>
