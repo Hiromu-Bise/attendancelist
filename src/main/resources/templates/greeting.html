@@ -16,36 +16,34 @@
     }
     setInterval('showClock()',1000);
     </script>
-    <title>Getting Started: Serving Web Content</title>
+    <title>ログイン(仮)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="|Hello, ${name}!|" />
-<p th:text="|Hello, ${attendances}|" />
 
 <p id="realtime"></p>
 
-<form method="post" action="http://localhost:8080/greeting">
+<form method="post" action="http://localhost:8080/input">
     <input type="hidden" id="post" name="post_param"/>
-    <input type="submit" value="出勤">
+    <input type="submit" value="ログイン">
 </form>
 
-<table border="1">
-    <tr>
-        <th>id</th>
-        <th>password</th>
-        <th>begin_time</th>
-        <th>end_time</th>
-    </tr>
-
-    <tr th:if="${!#lists.isEmpty(attendances)}" th:each="attendances : ${attendances}">
-        <td th:text="${attendances.id}"></td>
-        <td th:text="${attendances.password}"></td>
-        <td th:text="${attendances.begin_time}"></td>
-        <td th:text="${attendances.end_time}"></td>
-    </tr>
-
-</table>
+<!--<table border="1">-->
+<!--    <tr>-->
+<!--        <th>id</th>-->
+<!--        <th>password</th>-->
+<!--        <th>begin_time</th>-->
+<!--        <th>end_time</th>-->
+<!--    </tr>-->
+<!---->
+<!--    <tr th:if="${!#lists.isEmpty(attendances)}" th:each="attendances : ${attendances}">-->
+<!--        <td th:text="${attendances.id}"></td>-->
+<!--        <td th:text="${attendances.password}"></td>-->
+<!--        <td th:text="${attendances.begin_time}"></td>-->
+<!--        <td th:text="${attendances.end_time}"></td>-->
+<!--    </tr>-->
+<!---->
+<!--</table>-->
 
 </body>
 </html>
