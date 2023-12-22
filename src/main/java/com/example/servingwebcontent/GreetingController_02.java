@@ -10,16 +10,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 public class GreetingController_02 {
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    //中本↓↓↓
+    @RequestMapping("/loginPage")
+    public String send01() {
+        return "loginPage";
+    }
+    @PostMapping("/receive01")
+    public String receive01(Model m, @RequestParam("ID") String id, @RequestParam("PASS") String pass) {
+        m.addAttribute("id",id);
+        m.addAttribute("pass",pass);
+        Map<String, String> map = new HashMap<>();
 
+        String sql3 = "SELECT id,password FROM ATTENDANCES;";
+        List<Map<String, Object>> attendances = jdbcTemplate.queryForList(sql3);
+        System.out.println(attendances);
+        authenticate(id, pass);
+        boolean existAuth = Objects.equals(authenticate(id, pass), true);
+        if(existAuth){
+            return "greeting";
+        }
+        return "loginPage";
+    }
     @GetMapping("/greeting_02")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
 
@@ -31,7 +48,6 @@ public class GreetingController_02 {
 
         return "greeting";
     }
-
     @PostMapping("/greeting_02")
     public String postMethod(@RequestParam("post_param") String param1, String name, Model model) {
 
@@ -52,17 +68,18 @@ public class GreetingController_02 {
 
         return "greeting";
     }
-    
-    //中本↓↓↓
-    @RequestMapping("/send01")
-    public String send01() {
-        return "send01";
-    }
+    private boolean authenticate(String id, String password){
 
-    @PostMapping("/receive01") //次回ここから（send01で入力させたデータがattendandesDBのデータと合ってるか判定したい）
-    public String receive01(Model m, @RequestParam("NAME") String name, @RequestParam("PASS") String pass) {
-        m.addAttribute("name",name);
-        m.addAttribute("pass",pass);
-        return "receive01";
+        String sql3 = "SELECT id,password FROM ATTENDANCES;";
+        List<Map<String, Object>> map = jdbcTemplate.queryForList(sql3);
+
+        for(int i=0; i<map.size(); i++) {
+            boolean existId = id.equals((String) map.get(i).get("id"));
+            boolean existPassword = password.equals(map.get(i).get("password"));
+            if(existId && existPassword){
+                return true;
+            }
+        }
+        return false;
     }
 }
