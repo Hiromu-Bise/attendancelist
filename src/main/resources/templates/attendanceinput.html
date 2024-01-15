@@ -15,10 +15,10 @@
           document.getElementById("realtime").innerHTML = msg;
         }
         setInterval('showClock()',1000);
-      </script>
+    </script>
     <title>勤怠入力</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+    <link rel="stylesheet" th:href="@{css/attendance-input.css}">
 
 </head>
 <body>
@@ -31,7 +31,6 @@
 
 
 <p>こんにちは、ななしさん。</p>
-<p>状態：未出勤</p>
 <p id="realtime"></p>
 
 <form method="post" action="http://localhost:8080/attendanceinput">
