@@ -16,11 +16,12 @@ import java.util.*;
 public class GreetingController_02 {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    //中本↓↓↓
+
     @RequestMapping("/loginPage")
-    public String send01() {
+    public String loginPage() {
         return "loginPage";
     }
+
     @PostMapping("/receive01")
     public String receive01(Model m, @RequestParam("ID") String id, @RequestParam("PASS") String pass) {
         m.addAttribute("id",id);
@@ -33,10 +34,23 @@ public class GreetingController_02 {
         authenticate(id, pass);
         boolean existAuth = Objects.equals(authenticate(id, pass), true);
         if(existAuth){
-            return "greeting";
+            System.out.println("こんにちは");
+            return "input";
+        }else {
+            m.addAttribute("errorMessage", "ユーザー名またはパスワードが正しくありません。");
+            return "loginPage";
         }
-        return "loginPage";
     }
+
+    @GetMapping("/history")
+    public String getAttendanceList(Model model) {
+        String sql= "SELECT id,begin_time,end_time FROM ATTENDANCES;";
+        List<Map<String, Object>> attendanceList = jdbcTemplate.queryForList(sql);
+
+        model.addAttribute("attendanceList", attendanceList);
+        return "history";
+    }
+
     @GetMapping("/greeting_02")
     public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
 
@@ -48,6 +62,7 @@ public class GreetingController_02 {
 
         return "greeting";
     }
+
     @PostMapping("/greeting_02")
     public String postMethod(@RequestParam("post_param") String param1, String name, Model model) {
 
@@ -65,9 +80,9 @@ public class GreetingController_02 {
         System.out.println(attendances);
         model.addAttribute("attendances", attendances);
 
-
         return "greeting";
     }
+
     private boolean authenticate(String id, String password){
 
         String sql3 = "SELECT id,password FROM ATTENDANCES;";

@@ -38,10 +38,6 @@ public class GreetingController {
         Timestamp time = new Timestamp(date.getTime());
         System.out.println(time);
 
-//        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='12345678';";
-//
-//        jdbcTemplate.update(sql2,time);
-
         model.addAttribute("name", name);
         String sql = "SELECT * FROM ATTENDANCES;";
         List<Map<String,Object>> attendances = jdbcTemplate.queryForList(sql);
