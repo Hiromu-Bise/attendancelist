@@ -1,0 +1,49 @@
+<!-- resources/templates/history.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勤怠履歴一覧</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>勤怠履歴一覧</h2>
+
+<table>
+  <tr>
+    <th>ユーザーID</th>
+    <th>出勤時刻</th>
+    <th>退勤時刻</th>
+  </tr>
+  <tr th:each="attendance : ${attendanceList}">
+    <td th:text="${attendance['id']}"></td>
+    <td th:text="${attendance['begin_time']}"></td>
+    <td th:text="${attendance['end_time']}"></td>
+  </tr>
+</table>
+
+</body>
+</html>
