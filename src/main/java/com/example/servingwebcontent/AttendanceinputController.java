@@ -28,7 +28,7 @@ public class AttendanceinputController {
 
         jdbcTemplate.update(sql2,time);
 
-        return "workingplace";
+        return "workplace";
     }
     @PostMapping("/leavinginput")
     public String leavinginput(@RequestParam("post_param") String param1, String name, Model model) {

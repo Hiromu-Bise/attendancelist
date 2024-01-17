@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -44,7 +45,7 @@ public class GreetingController_02 {
 
     @GetMapping("/history")
     public String getAttendanceList(Model model) {
-        String sql= "SELECT id,begin_time,end_time FROM ATTENDANCES;";
+        String sql= "SELECT id, begin_time, end_time FROM ATTENDANCES WHERE (begin_time IS NOT NULL OR end_time IS NOT NULL)";
         List<Map<String, Object>> attendanceList = jdbcTemplate.queryForList(sql);
 
         model.addAttribute("attendanceList", attendanceList);
