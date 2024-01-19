@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script>
+        function showClock() {
+          let nowTime = new Date();
+          let nowFullYear = nowTime.getFullYear();
+          let nowMonth = nowTime.getMonth();
+          let nowDate = nowTime.getDate();
+          let nowHour = nowTime.getHours();
+          let nowMin  = nowTime.getMinutes();
+          let nowSec  = nowTime.getSeconds();
+          let msg = nowFullYear + "/" + nowMonth + "/" + nowDate + " "
+                        + nowHour + ":" + nowMin + ":" + nowSec;
+          document.getElementById("realtime").innerHTML = msg;
+        }
+        setInterval('showClock()',1000);
+    </script>
+    <title>勤怠状況</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" th:href="@{css/attendance-input.css}">
+</head>
+<body>
+
+<p>・ログイン</p>
+<p>・連絡先登録</p>
+<p>・勤務場所登録</p>
+<p>・勤怠状況一覧表示</p>
+<p>・ログアウト</p>
+
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>password</th>
+        <th>begin_time</th>
+        <th>end_time</th>
+    </tr>
+
+    <tr th:if="${!#lists.isEmpty(attendances)}" th:each="attendances : ${attendances}">
+        <td th:text="${attendances.id}"></td>
+        <td th:text="${attendances.password}"></td>
+        <td th:text="${attendances.begin_time}"></td>
+        <td th:text="${attendances.end_time}"></td>
+    </tr>
+
+</table>
+
+
+</body>
+</html>
