@@ -24,7 +24,7 @@ public class AttendanceinputController {
         Timestamp time = new Timestamp(date.getTime());
         System.out.println(time);
 
-        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='13579';";
+        String sql2 = "UPDATE ATTENDANCES SET begin_time = ? WHERE id='12345678';";
 
         jdbcTemplate.update(sql2,time);
 
@@ -36,10 +36,10 @@ public class AttendanceinputController {
         Timestamp time = new Timestamp(date.getTime());
         System.out.println(time);
 
-        String sql2 = "UPDATE ATTENDANCES SET end_time = ? WHERE id='13579';";
+        String sql2 = "UPDATE ATTENDANCES SET end_time = ? WHERE id='12345678';";
 
         jdbcTemplate.update(sql2, time);
 
-        return "attendanceinput";
+        return "loginPage";
     }
 }
